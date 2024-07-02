@@ -5,7 +5,7 @@ from snowflake.snowpark.functions import col
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 st.write(
-    """Choose the fruits youwant in your custom Smoothie!""")
+    """Choose the fruits you want in your custom Smoothie!""")
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be:', name_on_order)
@@ -45,4 +45,9 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered!, ' + name_on_order, icon="✅");
+
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
+
     
